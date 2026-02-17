@@ -1,0 +1,66 @@
+{
+	"name": "prompt-scanner",
+	"version": "0.1.0",
+	"description": "Lightweight, extensible prompt injection and jailbreak detection for LLM applications",
+	"type": "module",
+	"main": "./dist/index.cjs",
+	"module": "./dist/index.js",
+	"types": "./dist/index.d.ts",
+	"exports": {
+		".": {
+			"import": {
+				"types": "./dist/index.d.ts",
+				"default": "./dist/index.js"
+			},
+			"require": {
+				"types": "./dist/index.d.cts",
+				"default": "./dist/index.cjs"
+			}
+		}
+	},
+	"bin": {
+		"prompt-scanner": "./dist/cli.js"
+	},
+	"files": ["dist", "rules"],
+	"scripts": {
+		"build": "tsup",
+		"dev": "tsup --watch",
+		"test": "vitest run",
+		"test:watch": "vitest",
+		"test:coverage": "vitest run --coverage",
+		"lint": "biome check .",
+		"lint:fix": "biome check --write .",
+		"format": "biome format --write .",
+		"check": "biome check . && tsc --noEmit",
+		"prepublishOnly": "pnpm run build"
+	},
+	"keywords": [
+		"prompt-injection",
+		"jailbreak",
+		"llm",
+		"security",
+		"scanner",
+		"ai-safety",
+		"guardrails"
+	],
+	"author": "João Pinho",
+	"license": "Apache-2.0",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/jpinho/prompt-scanner.git"
+	},
+	"engines": {
+		"node": ">=18.0.0"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "^1.9.0",
+		"@vitest/coverage-v8": "^3.0.0",
+		"tsup": "^8.0.0",
+		"typescript": "^5.7.0",
+		"vitest": "^3.0.0"
+	},
+	"dependencies": {
+		"citty": "^0.1.0",
+		"yaml": "^2.7.0"
+	}
+}
